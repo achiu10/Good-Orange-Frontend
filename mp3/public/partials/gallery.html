@@ -1,0 +1,51 @@
+<h1>Gallery</h1>
+<div class="gallery">
+    <div class="row">
+        <div class="col-md-2">
+            <!--Sidebar content-->
+            <a class = "button" href="#/gallery">Gallery</a>
+            <a class = "button" href="#/list">List</a>
+<section>
+            Choose genre:
+            <select ng-model="orderProp">
+                <option value="">All</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Animation">Animation</option>
+                <option value="Biography">Biography</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Crime">Crime</option>
+                <option value="Drama">Drama</option>
+                <option value="Family">Family</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Film-Noir">Film-Noir</option>
+                <option value="History">History</option>
+                <option value="Horror">Horror</option>
+                <option value="Music">Music</option>
+                <option value="Musical">Musical</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Romance">Romance</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Sport">Sport</option>
+                <option value="Thriller">Thriller</option>
+                <option value="War">War</option>
+                <option value="Western">Western</option>
+
+            </select>
+
+</section>
+        </div>
+        <div class="col-md-10">
+            <!--Body content-->
+
+            <ul class="movies">
+                    <li ng-repeat="movie in movies | filter:orderProp" class="thumbnail">
+                        <h3 class = "movieTitle"><a href="#/list/{{movie.rank}}" class="thumb"><img ng-src="./data/images/{{ movie.imdbID }}.jpg" alt="{{movie.title}}"></a></h3>
+                    </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+
