@@ -1,27 +1,24 @@
 /* Sample Controller */
 var movieControllers = angular.module('movieControllers', []);
 
-movieControllers.controller('listCtrl', ['$scope', '$http', '$rootScope',
+movieControllers.controller('homeCtrl', ['$scope', '$http', '$rootScope',
     function($scope, $http, $rootScope) {
         $http.get('./data/imdb250.json').success(function(data) {
             //$scope.movies = data;
-            $rootScope.movies = data;
-            $scope.movies = $rootScope.movies;
+            $scope.restaurants = data;
         });
 
-        $scope.orderProp = 'rank';
+        $scope.orderProp = 'name';
     }]);
 
 
-movieControllers.controller('galleryCtrl', ['$scope', '$http', '$rootScope',
+movieControllers.controller('searchCtrl', ['$scope', '$http', '$rootScope',
     function($scope, $http, $rootScope) {
         $http.get('./data/imdb250.json').success(function(data) {
-            //$scope.movies = data;
-            $rootScope.movies = data;
-            $scope.movies = $rootScope.movies;
+            $scope.restaurants = data;
         });
 
-        $scope.orderProp = 'rank';
+        $scope.orderProp = 'name';
     }]);
 
 /*['$scope', '$routeParams','$rootScope',
@@ -29,7 +26,7 @@ movieControllers.controller('galleryCtrl', ['$scope', '$http', '$rootScope',
         $scope.movies = $rootScope.movies;
     }]);*/
 
-movieControllers.controller('detailCtrl',/*['$scope', '$http','$routeParams', '$rootScope',
+movieControllers.controller('reviewsCtrl',/*['$scope', '$http','$routeParams', '$rootScope',
     function($scope, $routeParams,$http, $rootScope) {
         $http.get('./data/imdb250.json').success(function(data) {
             $scope.rank = $routeParams.rank;
@@ -40,6 +37,8 @@ movieControllers.controller('detailCtrl',/*['$scope', '$http','$routeParams', '$
     function($scope, $routeParams, $rootScope) {
         $scope.rank = $routeParams.rank;
        $scope.movie = $rootScope.movies[($scope.rank - 0) -  1];
+        $scope.arr = [];
+        $scope.arr.length = count;
         $scope.next= function next(rank){
             return (rank)%250 + 1;
         };
@@ -49,4 +48,37 @@ movieControllers.controller('detailCtrl',/*['$scope', '$http','$routeParams', '$
                 return 250;
             return (rank-1)%250;
         };
+    }]);
+
+movieControllers.controller('loginCtrl', ['$scope', '$http', '$rootScope',
+    function($scope, $http, $rootScope) {
+        $http.get('./data/imdb250.json').success(function(data) {
+            $scope.restaurants = data;
+        });
+
+        $scope.orderProp = 'name';
+    }]);
+movieControllers.controller('newuserCtrl', ['$scope', '$http', '$rootScope',
+    function($scope, $http, $rootScope) {
+        $http.get('./data/imdb250.json').success(function(data) {
+            $scope.restaurants = data;
+        });
+
+        $scope.orderProp = 'name';
+    }]);
+movieControllers.controller('addRestaurantCtrl', ['$scope', '$http', '$rootScope',
+    function($scope, $http, $rootScope) {
+        $http.get('./data/imdb250.json').success(function(data) {
+            $scope.restaurants = data;
+        });
+
+        $scope.orderProp = 'name';
+    }]);
+movieControllers.controller('viewRestaurantsCtrl', ['$scope', '$http', '$rootScope',
+    function($scope, $http, $rootScope) {
+        $http.get('./data/imdb250.json').success(function(data) {
+            $scope.restaurants = data;
+        });
+
+        $scope.orderProp = 'name';
     }]);
